@@ -1,1476 +1,755 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BioRelease Agro | Informativo Oficial</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bio: {
-                            50: "#eefcf2",
-                            100: "#d9f8e2",
-                            200: "#b4efc5",
-                            300: "#82e099",
-                            400: "#49c96b",
-                            500: "#22a84a",
-                            600: "#17873a",
-                            700: "#146a31",
-                            800: "#135429",
-                            900: "#103f21",
-                            950: "#082412"
-                        }
-                    },
-                    boxShadow: {
-                        soft: "0 10px 35px rgba(0,0,0,0.18)",
-                        glow: "0 0 0 1px rgba(34,168,74,.18), 0 18px 50px rgba(34,168,74,.16)"
-                    },
-                    backgroundImage: {
-                        mesh: "radial-gradient(circle at 10% 10%, rgba(34,168,74,.18), transparent 22%), radial-gradient(circle at 90% 15%, rgba(74,201,107,.12), transparent 18%), radial-gradient(circle at 50% 100%, rgba(255,255,255,.04), transparent 30%)",
-                        grid: "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)"
-                    },
-                    animation: {
-                        floaty: "floaty 4s ease-in-out infinite",
-                        pulseSlow: "pulseSlow 2.5s ease-in-out infinite",
-                        fadeUp: "fadeUp .8s ease forwards"
-                    },
-                    keyframes: {
-                        floaty: {
-                            "0%, 100%": { transform: "translateY(0px)" },
-                            "50%": { transform: "translateY(-8px)" }
-                        },
-                        pulseSlow: {
-                            "0%, 100%": { opacity: 1 },
-                            "50%": { opacity: .7 }
-                        },
-                        fadeUp: {
-                            "0%": { opacity: 0, transform: "translateY(20px)" },
-                            "100%": { opacity: 1, transform: "translateY(0)" }
-                        }
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioRelease - Fertilizante Inteligente de Liberação Controlada</title>
+  <meta name="description" content="BioRelease utiliza matriz de liberação controlada para aumentar eficiência nutricional, reduzir perdas e fortalecer o desenvolvimento vegetal.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#050805',
+            darkGreen: '#0f2d1e',
+            emerald: '#1f8a5b',
+            lightAccent: '#6ee7b7',
+            textPrimary: '#f5f5f5',
+            textSecondary: '#9ca3af',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
         }
-    </script>
-
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: #07120c;
-            background-image:
-                radial-gradient(circle at top left, rgba(34,168,74,.18), transparent 24%),
-                radial-gradient(circle at top right, rgba(255,255,255,.05), transparent 14%),
-                linear-gradient(180deg, #07120c 0%, #0a1710 28%, #0b120f 100%);
-        }
-
-        .grid-bg {
-            background-size: 28px 28px;
-        }
-
-        .glass {
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            background: rgba(255,255,255,.05);
-            border: 1px solid rgba(255,255,255,.08);
-        }
-
-        .section-fade {
-            opacity: 0;
-            transform: translateY(26px);
-            transition: all .7s ease;
-        }
-
-        .section-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .text-gradient {
-            background: linear-gradient(90deg, #d9f8e2 0%, #82e099 45%, #49c96b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-overlay {
-            background:
-                linear-gradient(180deg, rgba(6,12,9,.2), rgba(6,12,9,.72)),
-                radial-gradient(circle at 15% 20%, rgba(73,201,107,.20), transparent 18%),
-                radial-gradient(circle at 85% 10%, rgba(255,255,255,.07), transparent 12%);
-        }
-
-        .tab-btn.active {
-            background: #22a84a;
-            color: white;
-            border-color: #22a84a;
-            box-shadow: 0 10px 35px rgba(34,168,74,.20);
-        }
-
-        .timeline-line::before {
-            content: "";
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, rgba(73,201,107,.65), rgba(255,255,255,.10));
-        }
-
-        .timeline-dot {
-            box-shadow: 0 0 0 6px rgba(34,168,74,.12);
-        }
-
-        .counter {
-            font-variant-numeric: tabular-nums;
-        }
-
-        .nav-link::after {
-            content: "";
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #49c96b;
-            transition: width .25s ease;
-            margin-top: 5px;
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .card-hover {
-            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            border-color: rgba(73,201,107,.35);
-            box-shadow: 0 18px 45px rgba(0,0,0,.20);
-        }
-
-        .noise::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
-            background-size: 12px 12px;
-            opacity: .06;
-            pointer-events: none;
-        }
-
-    </style>
+      }
+    }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #050805;
+      font-family: 'Inter', sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #6ee7b7 0%, #1f8a5b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glow-card {
+      box-shadow: 0 0 60px rgba(31, 138, 91, 0.15), 0 0 100px rgba(110, 231, 183, 0.05);
+    }
+    .glow-btn {
+      box-shadow: 0 0 30px rgba(31, 138, 91, 0.4);
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 50px rgba(31, 138, 91, 0.6);
+    }
+    .glass {
+      background: rgba(15, 45, 30, 0.4);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(110, 231, 183, 0.1);
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(110, 231, 183, 0.3);
+      border-radius: 50%;
+      animation: float 8s infinite ease-in-out;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+      50% { transform: translateY(-30px) translateX(20px); opacity: 0.8; }
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.2; }
+      100% { transform: scale(0.8); opacity: 0.5; }
+    }
+    .pulse-ring {
+      animation: pulse-ring 4s infinite ease-in-out;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal img {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 12px;
+    }
+    .bar-animation {
+      transition: width 1.5s ease-out;
+    }
+  </style>
 </head>
-<body class="text-white selection:bg-bio-500 selection:text-white">
+<body class="text-textPrimary antialiased">
 
-    <!-- NAVBAR -->
-    <header id="topo" class="sticky top-0 z-50 border-b border-white/10 bg-[#08110c]/80 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="h-20 flex items-center justify-between">
-                <a href="#inicio" class="flex items-center gap-3 group">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-bio-400 to-bio-700 flex items-center justify-center shadow-glow group-hover:scale-105 transition">
-                        <span class="font-black text-lg">B</span>
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg tracking-wide">BioRelease Agro</p>
-                        <p class="text-xs text-white/60 -mt-1">Fertilizante de liberação controlada</p>
-                    </div>
-                </a>
-
-                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium">
-                    <a href="#inicio" class="nav-link text-white/80 hover:text-white">Início</a>
-                    <a href="#problema" class="nav-link text-white/80 hover:text-white">Problema</a>
-                    <a href="#solucao" class="nav-link text-white/80 hover:text-white">Solução</a>
-                    <a href="#composicao" class="nav-link text-white/80 hover:text-white">Composição</a>
-                    <a href="#experimento" class="nav-link text-white/80 hover:text-white">Experimento</a>
-                    <a href="#impacto" class="nav-link text-white/80 hover:text-white">Impacto</a>
-                    <a href="#artigo" class="nav-link text-white/80 hover:text-white">Artigo</a>
-                    <a href="#contato" class="nav-link text-white/80 hover:text-white">Contato</a>
-                </nav>
-
-                <div class="flex items-center gap-3">
-                    <button id="mobileMenuBtn" class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-
-                    <a href="biorelease.pdf" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-bio-500 hover:bg-bio-400 text-white font-semibold shadow-glow transition">
-                        Ver pesquisa
-                    </a>
-                </div>
-            </div>
-
-            <div id="mobileMenu" class="lg:hidden hidden pb-5">
-                <div class="glass rounded-2xl p-4 flex flex-col gap-3 text-sm">
-                    <a href="#inicio" class="text-white/85 hover:text-white">Início</a>
-                    <a href="#problema" class="text-white/85 hover:text-white">Problema</a>
-                    <a href="#solucao" class="text-white/85 hover:text-white">Solução</a>
-                    <a href="#composicao" class="text-white/85 hover:text-white">Composição</a>
-                    <a href="#experimento" class="text-white/85 hover:text-white">Experimento</a>
-                    <a href="#impacto" class="text-white/85 hover:text-white">Impacto</a>
-                    <a href="#artigo" class="text-white/85 hover:text-white">Artigo</a>
-                    <a href="#contato" class="text-white/85 hover:text-white">Contato</a>
-                </div>
-            </div>
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-emerald flex items-center justify-center">
+            <span class="text-bg font-bold text-sm">B</span>
+          </div>
+          <span class="font-semibold text-lg">BioRelease</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#resultados" class="text-textSecondary hover:text-lightAccent transition-colors text-sm">Resultados</a>
+          <a href="#tecnologia" class="text-textSecondary hover:text-lightAccent transition-colors text-sm">Tecnologia</a>
+          <a href="#galeria" class="text-textSecondary hover:text-lightAccent transition-colors text-sm">Galeria</a>
+          <a href="biorelease.pdf" target="_blank" class="bg-emerald hover:bg-emerald/80 text-bg px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+            Documento Técnico
+          </a>
         </div>
-    </header>
+        <button id="mobileMenuBtn" class="md:hidden text-textPrimary">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/5">
+      <div class="px-4 py-4 space-y-3">
+        <a href="#resultados" class="block text-textSecondary hover:text-lightAccent transition-colors">Resultados</a>
+        <a href="#tecnologia" class="block text-textSecondary hover:text-lightAccent transition-colors">Tecnologia</a>
+        <a href="#galeria" class="block text-textSecondary hover:text-lightAccent transition-colors">Galeria</a>
+        <a href="biorelease.pdf" target="_blank" class="block bg-emerald hover:bg-emerald/80 text-bg px-4 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+          Documento Técnico
+        </a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- HERO -->
-    <section id="inicio" class="relative overflow-hidden hero-overlay">
-        <div class="absolute inset-0 bg-grid grid-bg opacity-20"></div>
-        <div class="absolute -top-20 -left-16 w-80 h-80 bg-bio-500/15 blur-3xl rounded-full"></div>
-        <div class="absolute -bottom-16 -right-16 w-96 h-96 bg-bio-300/10 blur-3xl rounded-full"></div>
+  <!-- Hero Section -->
+  <section class="min-h-screen relative flex items-center overflow-hidden">
+    <!-- Particles -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="particle" style="top: 20%; left: 10%;"></div>
+      <div class="particle" style="top: 40%; left: 25%; animation-delay: 1s;"></div>
+      <div class="particle" style="top: 60%; left: 15%; animation-delay: 2s;"></div>
+      <div class="particle" style="top: 30%; left: 80%; animation-delay: 0.5s;"></div>
+      <div class="particle" style="top: 70%; left: 85%; animation-delay: 1.5s;"></div>
+      <div class="particle" style="top: 50%; left: 90%; animation-delay: 2.5s;"></div>
+      <div class="particle" style="top: 80%; left: 50%; animation-delay: 3s;"></div>
+      <div class="particle" style="top: 15%; left: 60%; animation-delay: 0.8s;"></div>
+    </div>
+    
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-darkGreen/30 via-bg to-bg"></div>
+    <div class="absolute top-1/4 -left-40 w-96 h-96 bg-emerald/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 -right-40 w-96 h-96 bg-lightAccent/5 rounded-full blur-3xl"></div>
 
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 lg:pt-28 lg:pb-32">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="section-fade">
-                    <div class="inline-flex items-center gap-2 rounded-full border border-bio-400/30 bg-bio-500/10 px-4 py-2 text-sm text-bio-100 mb-6">
-                        <span class="w-2.5 h-2.5 rounded-full bg-bio-400 animate-pulseSlow"></span>
-                        Projeto Smart Agro • Solução experimental em fertilização inteligente
-                    </div>
-
-                    <h1 class="text-4xl sm:text-5xl xl:text-6xl font-black leading-tight">
-                        O futuro da adubação pode ser
-                        <span class="text-gradient">mais eficiente, mais sustentável e mais inteligente.</span>
-                    </h1>
-
-                    <p class="mt-6 text-lg text-white/75 leading-relaxed max-w-2xl">
-                        O BioRelease Agro é uma proposta de fertilizante de liberação controlada formulado com
-                        quitosana, húmus peneirado, NPK, glicerina e amido, buscando reduzir perdas de nutrientes
-                        e melhorar a eficiência no desenvolvimento vegetal.
-                    </p>
-
-                    <div class="mt-8 flex flex-wrap gap-4">
-                        <a href="#solucao" class="px-6 py-4 rounded-2xl bg-bio-500 hover:bg-bio-400 font-bold shadow-glow transition">
-                            Conhecer o projeto
-                        </a>
-                        <a href="biorelease.pdf" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold transition">
-                            Ver pesquisa completa
-                        </a>
-                    </div>
-
-                    <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
-                        <div class="glass rounded-2xl p-4">
-                            <p class="text-2xl font-black counter" data-target="9">0</p>
-                            <p class="text-sm text-white/65 mt-1">Unidades experimentais</p>
-                        </div>
-                        <div class="glass rounded-2xl p-4">
-                            <p class="text-2xl font-black counter" data-target="3">0</p>
-                            <p class="text-sm text-white/65 mt-1">Tratamentos</p>
-                        </div>
-                        <div class="glass rounded-2xl p-4">
-                            <p class="text-2xl font-black counter" data-target="3">0</p>
-                            <p class="text-sm text-white/65 mt-1">Repetições por grupo</p>
-                        </div>
-                        <div class="glass rounded-2xl p-4">
-                            <p class="text-2xl font-black">2 g</p>
-                            <p class="text-sm text-white/65 mt-1">Dose aplicada por copo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-fade">
-                    <div class="relative glass rounded-[2rem] p-6 sm:p-8 shadow-soft border border-white/10">
-                        <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-bio-400/10 via-transparent to-white/5 pointer-events-none"></div>
-
-                        <div class="relative">
-                            <div class="flex items-center justify-between mb-6">
-                                <div>
-                                    <p class="text-sm uppercase tracking-[0.25em] text-bio-200/80">Resumo executivo</p>
-                                    <h2 class="text-2xl font-black mt-1">BioRelease em síntese</h2>
-                                </div>
-                                <div class="w-14 h-14 rounded-2xl bg-bio-500/15 border border-bio-400/25 flex items-center justify-center animate-floaty">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-bio-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3v18m9-9H3" />
-                                    </svg>
-                                </div>
-                            </div>
-
-                            <div class="space-y-4">
-                                <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                                    <p class="text-sm text-bio-200 font-semibold mb-1">Proposta central</p>
-                                    <p class="text-white/80 leading-relaxed">
-                                        Encapsular nutrientes em uma matriz estruturada para modular sua liberação,
-                                        reduzindo perdas por lixiviação e favorecendo nutrição mais equilibrada.
-                                    </p>
-                                </div>
-
-                                <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                                    <p class="text-sm text-bio-200 font-semibold mb-1">Cultura utilizada</p>
-                                    <p class="text-white/80 leading-relaxed">
-                                        Feijão, escolhido por seu rápido desenvolvimento e por permitir observação
-                                        inicial objetiva em experimento comparativo.
-                                    </p>
-                                </div>
-
-                                <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                                    <p class="text-sm text-bio-200 font-semibold mb-1">Comparação experimental</p>
-                                    <p class="text-white/80 leading-relaxed">
-                                        BioRelease vs. NPK convencional vs. grupo controle sem fertilização adicional.
-                                    </p>
-                                </div>
-
-                                <div class="rounded-2xl border border-white/10 bg-gradient-to-r from-bio-500/15 to-white/5 p-5">
-                                    <p class="text-sm text-bio-100 font-semibold mb-1">Mensagem-chave</p>
-                                    <p class="text-white font-bold text-lg">
-                                        Não é apenas fertilizar. É controlar como o nutriente chega até a planta.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Left Content -->
+        <div class="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+            <span class="w-2 h-2 rounded-full bg-lightAccent animate-pulse"></span>
+            <span class="text-sm text-textSecondary">Agrotech Brasileira • Smart Agro</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            Fertilizante Inteligente.<br>
+            <span class="gradient-text">Resultado Real.</span>
+          </h1>
+          
+          <p class="text-lg text-textSecondary mb-8 max-w-xl">
+            BioRelease utiliza matriz de liberação controlada para aumentar eficiência nutricional, reduzir perdas e fortalecer o desenvolvimento vegetal.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 mb-6">
+            <a href="biorelease.pdf" target="_blank" class="inline-flex items-center justify-center gap-2 bg-emerald hover:bg-emerald/90 text-bg px-8 py-4 rounded-xl font-semibold text-lg glow-btn transition-all">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              Ler Documento Técnico
+            </a>
+            <a href="#resultados" class="inline-flex items-center justify-center gap-2 glass hover:bg-white/5 px-8 py-4 rounded-xl font-medium transition-all">
+              Ver Resultados
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </a>
+          </div>
+          
+          <p class="text-sm text-textSecondary/60">
+            Baseado em experimento comparativo com feijão • Assaí - PR
+          </p>
+        </div>
+        
+        <!-- Right Content - Product Card -->
+        <div class="fade-up relative flex justify-center lg:justify-end" style="animation-delay: 0.2s;">
+          <div class="relative">
+            <!-- Glow rings -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-80 h-80 rounded-full border border-emerald/20 pulse-ring"></div>
             </div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="w-96 h-96 rounded-full border border-lightAccent/10 pulse-ring" style="animation-delay: 1s;"></div>
+            </div>
+            
+            <!-- Card -->
+            <div class="relative glass rounded-3xl p-8 glow-card max-w-sm">
+              <div class="flex items-center justify-center mb-6">
+                <div class="w-24 h-24 rounded-full bg-gradient-to-br from-emerald to-lightAccent flex items-center justify-center">
+                  <span class="text-bg font-bold text-3xl">B</span>
+                </div>
+              </div>
+              <h2 class="text-2xl font-bold text-center mb-2">BioRelease</h2>
+              <p class="text-textSecondary text-center text-sm mb-6">Controlled Release Fertilizer</p>
+              
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 text-sm">
+                  <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+                  <span class="text-textSecondary">Matriz polimérica biodegradável</span>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                  <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+                  <span class="text-textSecondary">Liberação gradual de nutrientes</span>
+                </div>
+                <div class="flex items-center gap-3 text-sm">
+                  <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+                  <span class="text-textSecondary">Base: Quitosana + NPK + Húmus</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">O agro perde nutrientes todos os dias</h2>
+        <p class="text-textSecondary max-w-2xl mx-auto">
+          Fertilizantes convencionais apresentam alta taxa de perda, impactando produtividade e meio ambiente.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="fade-up glass rounded-2xl p-8 hover:border-emerald/30 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-emerald/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-lightAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Lixiviação no Solo</h3>
+          <p class="text-textSecondary text-sm">
+            Nutrientes são arrastados pela água antes de serem absorvidos pelas raízes das plantas.
+          </p>
+        </div>
+        
+        <div class="fade-up glass rounded-2xl p-8 hover:border-emerald/30 transition-colors" style="animation-delay: 0.1s;">
+          <div class="w-12 h-12 rounded-xl bg-emerald/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-lightAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Liberação Imediata</h3>
+          <p class="text-textSecondary text-sm">
+            Pico de nutrientes no início causa desperdício e pode prejudicar o desenvolvimento inicial.
+          </p>
+        </div>
+        
+        <div class="fade-up glass rounded-2xl p-8 hover:border-emerald/30 transition-colors" style="animation-delay: 0.2s;">
+          <div class="w-12 h-12 rounded-xl bg-emerald/20 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-lightAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Baixa Eficiência</h3>
+          <p class="text-textSecondary text-sm">
+            Fertilizantes comuns apresentam aproveitamento reduzido, exigindo reaplicações constantes.
+          </p>
+        </div>
+      </div>
+      
+      <div class="fade-up text-center">
+        <div class="inline-flex items-center gap-4 glass rounded-2xl px-8 py-6">
+          <div class="w-1 h-12 bg-gradient-to-b from-lightAccent to-emerald rounded-full"></div>
+          <p class="text-xl font-medium">BioRelease nasce para mudar essa lógica.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section id="resultados" class="py-24 relative bg-gradient-to-b from-bg via-darkGreen/20 to-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+          <span class="text-sm text-lightAccent">Dados Experimentais</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Resultados Iniciais Observados</h2>
+        <p class="text-textSecondary max-w-2xl mx-auto">
+          Comparação após 14 dias de cultivo em feijão entre os tratamentos Controle, NPK e BioRelease.
+        </p>
+      </div>
+
+      <!-- Metrics Cards -->
+      <div class="grid lg:grid-cols-3 gap-8 mb-12">
+        <!-- Altura do Caule -->
+        <div class="fade-up glass rounded-2xl p-8">
+          <h3 class="text-lg font-semibold mb-6">Altura do Caule (cm)</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-textSecondary">Controle</span>
+                <span class="font-medium">5,2 cm</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-textSecondary/50 rounded-full" data-width="47"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-textSecondary">NPK</span>
+                <span class="font-medium">7,6 cm</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-emerald/70 rounded-full" data-width="69"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-lightAccent">BioRelease</span>
+                <span class="font-medium text-lightAccent">7,8 cm</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-gradient-to-r from-emerald to-lightAccent rounded-full" data-width="71"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="relative border-t border-white/10 bg-white/5">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-                <div class="flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/60">
-                    <span>CEEP Assaí-PR</span>
-                    <span>Smart Agro</span>
-                    <span>Desenvolvimento experimental</span>
-                    <span>Fertilizante de liberação controlada</span>
-                    <span>BioRelease Agro</span>
-                </div>
+        <!-- Número de Folhas -->
+        <div class="fade-up glass rounded-2xl p-8" style="animation-delay: 0.1s;">
+          <h3 class="text-lg font-semibold mb-6">Número de Folhas</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-textSecondary">Controle</span>
+                <span class="font-medium">4</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-textSecondary/50 rounded-full" data-width="50"></div>
+              </div>
             </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-textSecondary">NPK</span>
+                <span class="font-medium">6</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-emerald/70 rounded-full" data-width="75"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-lightAccent">BioRelease</span>
+                <span class="font-medium text-lightAccent">8</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-gradient-to-r from-emerald to-lightAccent rounded-full" data-width="100"></div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- VISÃO GERAL -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade grid lg:grid-cols-3 gap-6">
-                <div class="glass rounded-3xl p-7 card-hover">
-                    <div class="w-14 h-14 rounded-2xl bg-bio-500/15 text-bio-200 flex items-center justify-center mb-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 10h.01M12 10h.01M16 10h.01M9 16h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-3">Base científica</h3>
-                    <p class="text-white/72 leading-relaxed">
-                        O projeto parte da lógica dos fertilizantes de comportamento compatível com sistemas de
-                        liberação controlada, unindo matriz polimérica, componente orgânico e fonte mineral.
-                    </p>
-                </div>
-
-                <div class="glass rounded-3xl p-7 card-hover">
-                    <div class="w-14 h-14 rounded-2xl bg-bio-500/15 text-bio-200 flex items-center justify-center mb-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-3">Validação experimental</h3>
-                    <p class="text-white/72 leading-relaxed">
-                        A estrutura do ensaio compara diretamente diferentes formas de disponibilização de nutrientes
-                        e cria base objetiva para análise futura de germinação, altura, folhas e raiz.
-                    </p>
-                </div>
-
-                <div class="glass rounded-3xl p-7 card-hover">
-                    <div class="w-14 h-14 rounded-2xl bg-bio-500/15 text-bio-200 flex items-center justify-center mb-5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6v6l4 2m6-2A10 10 0 1112 2a10 10 0 0110 10z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-3">Visão de futuro</h3>
-                    <p class="text-white/72 leading-relaxed">
-                        O potencial do BioRelease vai além de um experimento escolar: ele aponta para uma lógica de
-                        adubação mais eficiente, moderna e ambientalmente responsável.
-                    </p>
-                </div>
+        <!-- Raio do Caule -->
+        <div class="fade-up glass rounded-2xl p-8" style="animation-delay: 0.2s;">
+          <h3 class="text-lg font-semibold mb-6">Raio do Caule (cm)</h3>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-textSecondary">Controle</span>
+                <span class="font-medium">0,15 cm</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-textSecondary/50 rounded-full" data-width="60"></div>
+              </div>
             </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-textSecondary">NPK</span>
+                <span class="font-medium">0,20 cm</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-emerald/70 rounded-full" data-width="80"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2">
+                <span class="text-lightAccent">BioRelease</span>
+                <span class="font-medium text-lightAccent">0,25 cm</span>
+              </div>
+              <div class="h-3 bg-white/10 rounded-full overflow-hidden">
+                <div class="bar-animation h-full bg-gradient-to-r from-emerald to-lightAccent rounded-full" data-width="100"></div>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- PROBLEMA -->
-    <section id="problema" class="py-20 border-y border-white/10 bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade max-w-3xl mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Problema</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    Na fertilização convencional, uma parte importante do nutriente pode ser perdida antes mesmo de cumprir seu papel.
-                </h2>
-                <p class="mt-5 text-white/72 leading-relaxed text-lg">
-                    Lixiviação, volatilização e disponibilização imediata demais podem comprometer a eficiência da adubação.
-                    O grande desafio não é só colocar nutriente no solo — é garantir que ele permaneça disponível no momento certo
-                    e na região certa para a planta.
-                </p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-8 items-start">
-                <div class="section-fade glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-6">Dores do modelo tradicional</h3>
-
-                    <div class="space-y-5">
-                        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-                            <h4 class="font-bold text-lg mb-2">1. Liberação rápida demais</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                Nutrientes muito solúveis podem ficar disponíveis de forma intensa em um curto período,
-                                sem acompanhar o ritmo real de absorção vegetal.
-                            </p>
-                        </div>
-
-                        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-                            <h4 class="font-bold text-lg mb-2">2. Perdas ambientais</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                Parte da adubação pode se perder por processos físicos e químicos no solo, reduzindo eficiência
-                                e aumentando desperdício.
-                            </p>
-                        </div>
-
-                        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-                            <h4 class="font-bold text-lg mb-2">3. Menor estabilidade ao longo do tempo</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                Uma resposta inicial forte nem sempre significa melhor desempenho sustentado no desenvolvimento da planta.
-                            </p>
-                        </div>
-
-                        <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
-                            <h4 class="font-bold text-lg mb-2">4. Necessidade de inovação</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                A agricultura precisa de soluções que combinem produtividade, inteligência de liberação e menor impacto.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-fade">
-                    <div class="glass rounded-3xl p-8 shadow-soft mb-6">
-                        <h3 class="text-2xl font-black mb-5">Pergunta que move o projeto</h3>
-                        <blockquote class="text-2xl leading-relaxed font-bold text-bio-100">
-                            “E se o fertilizante não fosse apenas aplicado, mas estruturado para liberar nutrientes de forma mais gradual?”
-                        </blockquote>
-                    </div>
-
-                    <div class="glass rounded-3xl p-8 shadow-soft">
-                        <h3 class="text-2xl font-black mb-5">O que o BioRelease busca enfrentar</h3>
-                        <ul class="space-y-4 text-white/75 leading-relaxed">
-                            <li class="flex gap-3">
-                                <span class="mt-1 w-2.5 h-2.5 rounded-full bg-bio-400"></span>
-                                <span>Perdas por disponibilização imediata excessiva.</span>
-                            </li>
-                            <li class="flex gap-3">
-                                <span class="mt-1 w-2.5 h-2.5 rounded-full bg-bio-400"></span>
-                                <span>Baixa retenção relativa do nutriente no substrato.</span>
-                            </li>
-                            <li class="flex gap-3">
-                                <span class="mt-1 w-2.5 h-2.5 rounded-full bg-bio-400"></span>
-                                <span>Dependência de uma adubação que age rápido, mas pode sustentar menos ao longo do tempo.</span>
-                            </li>
-                            <li class="flex gap-3">
-                                <span class="mt-1 w-2.5 h-2.5 rounded-full bg-bio-400"></span>
-                                <span>Falta de soluções experimentais acessíveis que unam ciência, sustentabilidade e viabilidade prática.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+      <!-- Highlight -->
+      <div class="fade-up text-center">
+        <div class="inline-flex flex-col sm:flex-row items-center gap-4 glass rounded-2xl px-8 py-6">
+          <div class="w-12 h-12 rounded-xl bg-lightAccent/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-lightAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <p class="text-lg">
+            <span class="text-lightAccent font-semibold">BioRelease</span> apresentou maior robustez estrutural e desenvolvimento vegetativo superior.
+          </p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- SOLUÇÃO -->
-    <section id="solucao" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade max-w-3xl mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Solução</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    BioRelease Agro: uma formulação experimental que combina estrutura, nutrição e lógica de liberação controlada.
-                </h2>
-                <p class="mt-5 text-white/72 leading-relaxed text-lg">
-                    O projeto propõe a incorporação do NPK em uma matriz formada por quitosana, húmus peneirado, glicerina e amido,
-                    criando um sistema híbrido com potencial para disponibilizar nutrientes de forma progressiva no substrato.
-                </p>
+  <!-- Gallery Section -->
+  <section id="galeria" class="py-24 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 fade-up">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Evidência Experimental</h2>
+        <p class="text-textSecondary max-w-2xl mx-auto">
+          Registros fotográficos do experimento comparativo realizado em Assaí - PR.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="fade-up group cursor-pointer" onclick="openModal('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/img7-HQLOPLMvXaZiFKW5AUosD8kqDgXPcl.png')">
+          <div class="relative overflow-hidden rounded-2xl glass p-2">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/img7-HQLOPLMvXaZiFKW5AUosD8kqDgXPcl.png" 
+              alt="Comparação dia 7 - Controle, NPK e BioRelease" 
+              class="w-full rounded-xl transition-transform duration-500 group-hover:scale-105"
+            >
+            <div class="absolute inset-2 bg-gradient-to-t from-bg/80 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-medium">Dia 7 - Comparação Inicial</span>
             </div>
-
-            <div class="grid xl:grid-cols-5 gap-6">
-                <div class="xl:col-span-3 section-fade glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-6">Como a solução funciona</h3>
-
-                    <div class="grid sm:grid-cols-2 gap-5">
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <div class="text-bio-200 text-sm font-semibold mb-2">Etapa 1</div>
-                            <h4 class="font-black text-xl mb-2">Estruturação da matriz</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                Os componentes são combinados até formar uma massa homogênea, criando um corpo físico integrado,
-                                e não apenas uma mistura solta de insumos.
-                            </p>
-                        </div>
-
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <div class="text-bio-200 text-sm font-semibold mb-2">Etapa 2</div>
-                            <h4 class="font-black text-xl mb-2">Secagem e estabilização</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                Após a secagem, o material adquire condição mais estável e fragmentada, facilitando a dosagem
-                                e a aplicação nas unidades experimentais.
-                            </p>
-                        </div>
-
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <div class="text-bio-200 text-sm font-semibold mb-2">Etapa 3</div>
-                            <h4 class="font-black text-xl mb-2">Aplicação no substrato</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                Cada unidade recebe a mesma base experimental; o que muda é o tipo de fertilização aplicada,
-                                permitindo comparação objetiva entre tratamentos.
-                            </p>
-                        </div>
-
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <div class="text-bio-200 text-sm font-semibold mb-2">Etapa 4</div>
-                            <h4 class="font-black text-xl mb-2">Liberação esperada</h4>
-                            <p class="text-white/70 leading-relaxed">
-                                A hipótese do projeto é que a matriz favoreça maior retenção e liberação mais gradual,
-                                sustentando melhor o desenvolvimento vegetal ao longo do tempo.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="xl:col-span-2 section-fade glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-6">Diferenciais estratégicos</h3>
-
-                    <div class="space-y-4">
-                        <div class="rounded-2xl border border-bio-400/20 bg-bio-500/10 p-5">
-                            <p class="font-bold text-lg">Integração de materiais</p>
-                            <p class="text-white/70 mt-2">Une componente polimérico, orgânico e mineral em um mesmo sistema funcional.</p>
-                        </div>
-
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="font-bold text-lg">Comparação real com NPK</p>
-                            <p class="text-white/70 mt-2">Não é teoria isolada: o projeto foi desenhado para confronto experimental direto.</p>
-                        </div>
-
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="font-bold text-lg">Enfoque em eficiência</p>
-                            <p class="text-white/70 mt-2">A questão não é apenas fornecer nutriente, mas controlar a forma de disponibilização.</p>
-                        </div>
-
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="font-bold text-lg">Potencial sustentável</p>
-                            <p class="text-white/70 mt-2">Busca reduzir desperdícios e aproximar produtividade de responsabilidade ambiental.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- COMPOSIÇÃO -->
-    <section id="composicao" class="py-20 border-y border-white/10 bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade max-w-3xl mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Composição</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    Cada componente do BioRelease cumpre um papel técnico dentro da formulação.
-                </h2>
-                <p class="mt-5 text-white/72 leading-relaxed text-lg">
-                    A proposta do sistema não depende de um único ingrediente, mas da função complementar entre todos eles.
-                </p>
+        
+        <div class="fade-up group cursor-pointer" onclick="openModal('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/img10-OfQZurrFEh6A0M4rE2b8I1yogcCm8n.png')" style="animation-delay: 0.1s;">
+          <div class="relative overflow-hidden rounded-2xl glass p-2">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/img10-OfQZurrFEh6A0M4rE2b8I1yogcCm8n.png" 
+              alt="Comparação dia 10 - Controle, NPK e BioRelease" 
+              class="w-full rounded-xl transition-transform duration-500 group-hover:scale-105"
+            >
+            <div class="absolute inset-2 bg-gradient-to-t from-bg/80 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-medium">Dia 10 - Desenvolvimento</span>
             </div>
-
-            <div class="section-fade mb-8 flex flex-wrap gap-3">
-                <button class="tab-btn active px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold transition" data-tab="tab1">Visão geral</button>
-                <button class="tab-btn px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold transition" data-tab="tab2">Quitosana</button>
-                <button class="tab-btn px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold transition" data-tab="tab3">Húmus</button>
-                <button class="tab-btn px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold transition" data-tab="tab4">NPK</button>
-                <button class="tab-btn px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold transition" data-tab="tab5">Glicerina</button>
-                <button class="tab-btn px-5 py-3 rounded-2xl border border-white/10 bg-white/5 text-sm font-semibold transition" data-tab="tab6">Amido</button>
-            </div>
-
-            <div class="section-fade">
-                <div id="tab1" class="tab-panel">
-                    <div class="grid lg:grid-cols-2 gap-8">
-                        <div class="glass rounded-3xl p-8 shadow-soft">
-                            <h3 class="text-2xl font-black mb-6">Arquitetura da formulação</h3>
-                            <div class="overflow-hidden rounded-2xl border border-white/10">
-                                <table class="w-full text-left">
-                                    <thead class="bg-white/10">
-                                        <tr>
-                                            <th class="px-5 py-4 font-bold">Componente</th>
-                                            <th class="px-5 py-4 font-bold">Função principal</th>
-                                            <th class="px-5 py-4 font-bold">Contribuição esperada</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-white/10">
-                                        <tr class="bg-white/5">
-                                            <td class="px-5 py-4 font-semibold">Quitosana</td>
-                                            <td class="px-5 py-4 text-white/75">Formação de matriz polimérica</td>
-                                            <td class="px-5 py-4 text-white/75">Estrutura e liberação gradual</td>
-                                        </tr>
-                                        <tr class="bg-white/[0.03]">
-                                            <td class="px-5 py-4 font-semibold">Húmus peneirado</td>
-                                            <td class="px-5 py-4 text-white/75">Base orgânica</td>
-                                            <td class="px-5 py-4 text-white/75">Retenção de umidade e suporte biológico</td>
-                                        </tr>
-                                        <tr class="bg-white/5">
-                                            <td class="px-5 py-4 font-semibold">NPK</td>
-                                            <td class="px-5 py-4 text-white/75">Fonte de macronutrientes</td>
-                                            <td class="px-5 py-4 text-white/75">Fornecimento de N, P e K</td>
-                                        </tr>
-                                        <tr class="bg-white/[0.03]">
-                                            <td class="px-5 py-4 font-semibold">Glicerina</td>
-                                            <td class="px-5 py-4 text-white/75">Agente plastificante</td>
-                                            <td class="px-5 py-4 text-white/75">Flexibilidade e coesão</td>
-                                        </tr>
-                                        <tr class="bg-white/5">
-                                            <td class="px-5 py-4 font-semibold">Amido</td>
-                                            <td class="px-5 py-4 text-white/75">Agente estruturante</td>
-                                            <td class="px-5 py-4 text-white/75">Consistência e estabilidade</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="glass rounded-3xl p-8 shadow-soft">
-                            <h3 class="text-2xl font-black mb-6">Proporção inicial da formulação</h3>
-                            <div class="space-y-4">
-                                <div class="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center justify-between">
-                                    <span class="font-semibold">Quitosana</span>
-                                    <span class="text-bio-200 font-black">5 g</span>
-                                </div>
-                                <div class="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center justify-between">
-                                    <span class="font-semibold">Amido</span>
-                                    <span class="text-bio-200 font-black">5 g</span>
-                                </div>
-                                <div class="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center justify-between">
-                                    <span class="font-semibold">Húmus peneirado</span>
-                                    <span class="text-bio-200 font-black">10 g</span>
-                                </div>
-                                <div class="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center justify-between">
-                                    <span class="font-semibold">NPK</span>
-                                    <span class="text-bio-200 font-black">5 g</span>
-                                </div>
-                                <div class="rounded-2xl bg-white/5 border border-white/10 p-5 flex items-center justify-between">
-                                    <span class="font-semibold">Glicerina</span>
-                                    <span class="text-bio-200 font-black">5 mL</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-6 rounded-2xl bg-gradient-to-r from-bio-500/15 to-white/5 border border-bio-400/15 p-5">
-                                <p class="font-bold text-lg mb-2">Leitura estratégica</p>
-                                <p class="text-white/75 leading-relaxed">
-                                    A lógica da formulação está em criar uma matriz contínua, coesa e aplicável,
-                                    capaz de abrigar nutrientes e modular sua interação com o substrato.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab2" class="tab-panel hidden">
-                    <div class="glass rounded-3xl p-8 shadow-soft">
-                        <h3 class="text-3xl font-black mb-4">Quitosana</h3>
-                        <p class="text-white/75 leading-relaxed text-lg">
-                            A quitosana é o eixo estrutural da formulação. Sua função é atuar como matriz polimérica base,
-                            ajudando a formar uma rede capaz de incorporar os nutrientes e alterar sua dinâmica de liberação.
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-5 mt-8">
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Papel principal</p>
-                                <p class="text-white/70">Estruturar a matriz do BioRelease.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Ganhos esperados</p>
-                                <p class="text-white/70">Retenção física, modulação de difusão e potencial liberação mais gradual.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Importância no projeto</p>
-                                <p class="text-white/70">Sem ela, o BioRelease perderia grande parte do seu caráter de sistema estruturado.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab3" class="tab-panel hidden">
-                    <div class="glass rounded-3xl p-8 shadow-soft">
-                        <h3 class="text-3xl font-black mb-4">Húmus peneirado</h3>
-                        <p class="text-white/75 leading-relaxed text-lg">
-                            O húmus entra como componente orgânico estabilizado, auxiliando na retenção de umidade,
-                            no equilíbrio do substrato e na homogeneização do sistema.
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-5 mt-8">
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Papel principal</p>
-                                <p class="text-white/70">Base orgânica e suporte ao sistema.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Ganhos esperados</p>
-                                <p class="text-white/70">Melhoria física do substrato e suporte à retenção hídrica.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Importância no projeto</p>
-                                <p class="text-white/70">Ajuda a tornar a solução mais híbrida, unindo mineral e orgânico.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab4" class="tab-panel hidden">
-                    <div class="glass rounded-3xl p-8 shadow-soft">
-                        <h3 class="text-3xl font-black mb-4">NPK</h3>
-                        <p class="text-white/75 leading-relaxed text-lg">
-                            O NPK é a fonte de macronutrientes essenciais do experimento. No BioRelease, ele não é apenas aplicado:
-                            ele é incorporado à matriz, permitindo comparar duas formas diferentes de disponibilização do mesmo princípio nutricional.
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-5 mt-8">
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Papel principal</p>
-                                <p class="text-white/70">Fornecer nitrogênio, fósforo e potássio.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Ganhos esperados</p>
-                                <p class="text-white/70">Nutrição vegetal com dinâmica potencialmente mais controlada.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Importância no projeto</p>
-                                <p class="text-white/70">Permite o contraste central entre aplicação convencional e formulação inteligente.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab5" class="tab-panel hidden">
-                    <div class="glass rounded-3xl p-8 shadow-soft">
-                        <h3 class="text-3xl font-black mb-4">Glicerina</h3>
-                        <p class="text-white/75 leading-relaxed text-lg">
-                            A glicerina funciona como plastificante, reduzindo rigidez excessiva e favorecendo coesão na mistura.
-                            Isso ajuda a formar uma estrutura menos quebradiça e mais estável após secagem.
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-5 mt-8">
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Papel principal</p>
-                                <p class="text-white/70">Promover flexibilidade e continuidade estrutural.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Ganhos esperados</p>
-                                <p class="text-white/70">Melhor integridade física no preparo e aplicação.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Importância no projeto</p>
-                                <p class="text-white/70">Ajusta a mecânica da matriz, influenciando seu comportamento final.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="tab6" class="tab-panel hidden">
-                    <div class="glass rounded-3xl p-8 shadow-soft">
-                        <h3 class="text-3xl font-black mb-4">Amido</h3>
-                        <p class="text-white/75 leading-relaxed text-lg">
-                            O amido atua como agente estruturante complementar, contribuindo para consistência, coesão e estabilidade
-                            do material durante e após a formulação.
-                        </p>
-                        <div class="grid md:grid-cols-3 gap-5 mt-8">
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Papel principal</p>
-                                <p class="text-white/70">Ajudar na formação do corpo físico do fertilizante.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Ganhos esperados</p>
-                                <p class="text-white/70">Maior consistência e manutenção da forma após secagem.</p>
-                            </div>
-                            <div class="rounded-2xl bg-white/5 p-5 border border-white/10">
-                                <p class="font-bold text-lg mb-2">Importância no projeto</p>
-                                <p class="text-white/70">Complementa a matriz e participa da lógica de degradação gradual.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- EXPERIMENTO -->
-    <section id="experimento" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade max-w-3xl mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Experimento</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    Um delineamento simples, claro e comparativo para testar o comportamento do BioRelease.
-                </h2>
-                <p class="mt-5 text-white/72 leading-relaxed text-lg">
-                    O ensaio foi organizado com nove unidades experimentais, divididas em três grupos com três repetições cada,
-                    mantendo padronização nas condições de substrato, volume do recipiente e irrigação.
-                </p>
+        
+        <div class="fade-up group cursor-pointer" onclick="openModal('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/img14-4PdJBHflsapwunkwn9CSTVg35RJ7p8.png')" style="animation-delay: 0.2s;">
+          <div class="relative overflow-hidden rounded-2xl glass p-2">
+            <img 
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/img14-4PdJBHflsapwunkwn9CSTVg35RJ7p8.png" 
+              alt="Comparação dia 14 - NPK e BioRelease" 
+              class="w-full rounded-xl transition-transform duration-500 group-hover:scale-105"
+            >
+            <div class="absolute inset-2 bg-gradient-to-t from-bg/80 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              <span class="text-sm font-medium">Dia 14 - Resultado Final</span>
             </div>
-
-            <div class="grid xl:grid-cols-2 gap-8 items-start">
-                <div class="section-fade glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-6">Delineamento experimental</h3>
-
-                    <div class="overflow-hidden rounded-2xl border border-white/10">
-                        <table class="w-full text-left">
-                            <thead class="bg-white/10">
-                                <tr>
-                                    <th class="px-5 py-4 font-bold">Grupo</th>
-                                    <th class="px-5 py-4 font-bold">Tratamento</th>
-                                    <th class="px-5 py-4 font-bold">Nº de copos</th>
-                                    <th class="px-5 py-4 font-bold">Dose</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-white/10">
-                                <tr class="bg-white/5">
-                                    <td class="px-5 py-4 font-semibold">G1</td>
-                                    <td class="px-5 py-4 text-white/75">BioRelease</td>
-                                    <td class="px-5 py-4 text-white/75">3</td>
-                                    <td class="px-5 py-4 text-white/75">2 g</td>
-                                </tr>
-                                <tr class="bg-white/[0.03]">
-                                    <td class="px-5 py-4 font-semibold">G2</td>
-                                    <td class="px-5 py-4 text-white/75">NPK convencional</td>
-                                    <td class="px-5 py-4 text-white/75">3</td>
-                                    <td class="px-5 py-4 text-white/75">2 g</td>
-                                </tr>
-                                <tr class="bg-white/5">
-                                    <td class="px-5 py-4 font-semibold">G3</td>
-                                    <td class="px-5 py-4 text-white/75">Controle</td>
-                                    <td class="px-5 py-4 text-white/75">3</td>
-                                    <td class="px-5 py-4 text-white/75">0 g</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="mt-6 grid sm:grid-cols-2 gap-4">
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Recipiente</p>
-                            <p class="text-lg font-bold mt-1">Copos de 400 mL</p>
-                        </div>
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Cultura</p>
-                            <p class="text-lg font-bold mt-1">Feijão</p>
-                        </div>
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Substrato</p>
-                            <p class="text-lg font-bold mt-1">Terra + húmus</p>
-                        </div>
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Irrigação</p>
-                            <p class="text-lg font-bold mt-1">20 a 30 mL/dia</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-fade relative timeline-line glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-8">Sequência metodológica</h3>
-
-                    <div class="relative pl-12 space-y-8">
-                        <div class="relative">
-                            <div class="timeline-dot absolute -left-[44px] top-1 w-8 h-8 rounded-full bg-bio-500 border border-bio-300"></div>
-                            <h4 class="text-xl font-black">1. Preparo da formulação</h4>
-                            <p class="text-white/72 mt-2 leading-relaxed">
-                                Mistura dos componentes até obtenção de massa homogênea, com distribuição integrada
-                                dos materiais estruturantes e nutricionais.
-                            </p>
-                        </div>
-
-                        <div class="relative">
-                            <div class="timeline-dot absolute -left-[44px] top-1 w-8 h-8 rounded-full bg-bio-500 border border-bio-300"></div>
-                            <h4 class="text-xl font-black">2. Secagem do BioRelease</h4>
-                            <p class="text-white/72 mt-2 leading-relaxed">
-                                Alteração de uma massa úmida contínua para um material mais estável, fragmentado e aplicável.
-                            </p>
-                        </div>
-
-                        <div class="relative">
-                            <div class="timeline-dot absolute -left-[44px] top-1 w-8 h-8 rounded-full bg-bio-500 border border-bio-300"></div>
-                            <h4 class="text-xl font-black">3. Montagem das unidades</h4>
-                            <p class="text-white/72 mt-2 leading-relaxed">
-                                Inserção de pedrinhas para drenagem, substrato padronizado e aplicação dos respectivos tratamentos.
-                            </p>
-                        </div>
-
-                        <div class="relative">
-                            <div class="timeline-dot absolute -left-[44px] top-1 w-8 h-8 rounded-full bg-bio-500 border border-bio-300"></div>
-                            <h4 class="text-xl font-black">4. Plantio das sementes</h4>
-                            <p class="text-white/72 mt-2 leading-relaxed">
-                                Início da fase biológica do experimento, abrindo caminho para observação de germinação e crescimento.
-                            </p>
-                        </div>
-
-                        <div class="relative">
-                            <div class="timeline-dot absolute -left-[44px] top-1 w-8 h-8 rounded-full bg-bio-500 border border-bio-300"></div>
-                            <h4 class="text-xl font-black">5. Análise futura</h4>
-                            <p class="text-white/72 mt-2 leading-relaxed">
-                                Comparação entre grupos considerando germinação, altura, número de folhas, vigor e desenvolvimento radicular.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-fade mt-8 grid lg:grid-cols-2 gap-8">
-                <div class="glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-6">Variáveis do estudo</h3>
-
-                    <div class="space-y-4">
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="text-bio-200 font-semibold mb-1">Variável independente</p>
-                            <p class="text-white/75">Tipo de fertilizante aplicado: BioRelease, NPK convencional ou ausência de fertilização.</p>
-                        </div>
-
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="text-bio-200 font-semibold mb-1">Variáveis dependentes</p>
-                            <p class="text-white/75">Taxa de germinação, altura da planta, número de folhas e desenvolvimento radicular.</p>
-                        </div>
-
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="text-bio-200 font-semibold mb-1">Variáveis controladas</p>
-                            <p class="text-white/75">Volume do copo, composição do substrato, profundidade de plantio, irrigação e condições ambientais.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-6">Hipóteses do projeto</h3>
-
-                    <div class="space-y-5">
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="font-black text-lg mb-2">H0</p>
-                            <p class="text-white/75 leading-relaxed">
-                                Não haverá diferença relevante entre BioRelease, NPK convencional e controle nos parâmetros de desenvolvimento inicial.
-                            </p>
-                        </div>
-
-                        <div class="rounded-2xl border border-bio-400/20 bg-bio-500/10 p-5">
-                            <p class="font-black text-lg mb-2">H1</p>
-                            <p class="text-white/85 leading-relaxed">
-                                O BioRelease poderá apresentar comportamento mais estável ao longo do tempo e desempenho superior ao controle,
-                                com lógica de liberação mais equilibrada que a adubação convencional.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- COMPARAÇÃO -->
-    <section class="py-20 border-y border-white/10 bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade max-w-3xl mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Comparativo</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    O valor do BioRelease está na forma como o nutriente é entregue, não apenas no nutriente em si.
-                </h2>
+  <!-- Technology Section -->
+  <section id="tecnologia" class="py-24 relative bg-gradient-to-b from-bg via-darkGreen/20 to-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- Left -->
+        <div class="fade-up">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+            <span class="text-sm text-lightAccent">Inovação</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">Como Funciona</h2>
+          <p class="text-textSecondary mb-8">
+            A matriz BioRelease é composta por materiais biodegradáveis que controlam a liberação de nutrientes ao longo do tempo.
+          </p>
+          
+          <div class="space-y-4">
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Matriz com liberação gradual</h4>
+                <p class="text-sm text-textSecondary">Quitosana e amido formam uma estrutura que libera nutrientes progressivamente.</p>
+              </div>
             </div>
-
-            <div class="section-fade overflow-hidden rounded-3xl border border-white/10 shadow-soft">
-                <div class="overflow-x-auto">
-                    <table class="w-full min-w-[980px] text-left">
-                        <thead class="bg-white/10">
-                            <tr>
-                                <th class="px-6 py-5 font-bold">Critério</th>
-                                <th class="px-6 py-5 font-bold text-bio-100">BioRelease</th>
-                                <th class="px-6 py-5 font-bold">NPK convencional</th>
-                                <th class="px-6 py-5 font-bold">Controle</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-white/10">
-                            <tr class="bg-white/5">
-                                <td class="px-6 py-5 font-semibold">Forma de disponibilização</td>
-                                <td class="px-6 py-5 text-white/80">Estimada como mais gradual</td>
-                                <td class="px-6 py-5 text-white/70">Mais imediata</td>
-                                <td class="px-6 py-5 text-white/70">Ausente</td>
-                            </tr>
-                            <tr class="bg-white/[0.03]">
-                                <td class="px-6 py-5 font-semibold">Permanência no substrato</td>
-                                <td class="px-6 py-5 text-white/80">Estimada como maior</td>
-                                <td class="px-6 py-5 text-white/70">Menor retenção relativa</td>
-                                <td class="px-6 py-5 text-white/70">Sem adição</td>
-                            </tr>
-                            <tr class="bg-white/5">
-                                <td class="px-6 py-5 font-semibold">Estrutura física do fertilizante</td>
-                                <td class="px-6 py-5 text-white/80">Matriz formulada</td>
-                                <td class="px-6 py-5 text-white/70">Aplicação direta</td>
-                                <td class="px-6 py-5 text-white/70">Não se aplica</td>
-                            </tr>
-                            <tr class="bg-white/[0.03]">
-                                <td class="px-6 py-5 font-semibold">Potencial de liberação inicial rápida</td>
-                                <td class="px-6 py-5 text-white/80">Moderado</td>
-                                <td class="px-6 py-5 text-white/70">Alto</td>
-                                <td class="px-6 py-5 text-white/70">Nulo</td>
-                            </tr>
-                            <tr class="bg-white/5">
-                                <td class="px-6 py-5 font-semibold">Sustentação nutricional ao longo do tempo</td>
-                                <td class="px-6 py-5 text-white/80">Estimada como maior</td>
-                                <td class="px-6 py-5 text-white/70">Intermediária a menor</td>
-                                <td class="px-6 py-5 text-white/70">Baixa</td>
-                            </tr>
-                            <tr class="bg-white/[0.03]">
-                                <td class="px-6 py-5 font-semibold">Desenvolvimento inicial esperado</td>
-                                <td class="px-6 py-5 text-white/80">Progressivo</td>
-                                <td class="px-6 py-5 text-white/70">Bom no início</td>
-                                <td class="px-6 py-5 text-white/70">Mais limitado</td>
-                            </tr>
-                            <tr class="bg-white/5">
-                                <td class="px-6 py-5 font-semibold">Desenvolvimento radicular esperado</td>
-                                <td class="px-6 py-5 text-white/80">Potencialmente favorecido</td>
-                                <td class="px-6 py-5 text-white/70">Dependente da rápida disponibilidade</td>
-                                <td class="px-6 py-5 text-white/70">Menor suporte</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Menor pico de perdas</h4>
+                <p class="text-sm text-textSecondary">Redução de lixiviação e volatilização nos primeiros dias após aplicação.</p>
+              </div>
             </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Nutrição mais constante</h4>
+                <p class="text-sm text-textSecondary">Fornecimento equilibrado durante todo o ciclo inicial da planta.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Potencial ganho de eficiência</h4>
+                <p class="text-sm text-textSecondary">Aproveitamento otimizado dos nutrientes aplicados.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-emerald/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div class="w-2 h-2 rounded-full bg-lightAccent"></div>
+              </div>
+              <div>
+                <h4 class="font-medium mb-1">Solução sustentável nacional</h4>
+                <p class="text-sm text-textSecondary">Desenvolvido com materiais acessíveis e biodegradáveis no Brasil.</p>
+              </div>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- IMPACTO -->
-    <section id="impacto" class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade max-w-3xl mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Impacto</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    O BioRelease não propõe apenas um fertilizante. Propõe uma mudança de lógica na fertilização.
-                </h2>
-                <p class="mt-5 text-white/72 leading-relaxed text-lg">
-                    O projeto aponta para uma agricultura com maior inteligência de liberação, menor desperdício e melhor conexão
-                    entre ciência dos materiais e desempenho agronômico.
-                </p>
+        
+        <!-- Right - Diagram -->
+        <div class="fade-up" style="animation-delay: 0.2s;">
+          <div class="glass rounded-3xl p-8 glow-card">
+            <h3 class="text-lg font-semibold mb-8 text-center">Liberação de Nutrientes ao Longo do Tempo</h3>
+            
+            <div class="space-y-6">
+              <!-- NPK Convencional -->
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="text-textSecondary">NPK Convencional</span>
+                  <span class="text-textSecondary/60">Pico imediato</span>
+                </div>
+                <div class="h-16 bg-white/5 rounded-xl overflow-hidden relative">
+                  <svg class="w-full h-full" viewBox="0 0 400 60" preserveAspectRatio="none">
+                    <path d="M0 55 Q50 55 80 10 Q110 55 200 55 L400 55" stroke="rgba(156, 163, 175, 0.5)" stroke-width="2" fill="none"/>
+                  </svg>
+                  <div class="absolute top-2 left-16 text-xs text-textSecondary/60">Alto pico inicial</div>
+                </div>
+              </div>
+              
+              <!-- BioRelease -->
+              <div>
+                <div class="flex justify-between text-sm mb-2">
+                  <span class="text-lightAccent">BioRelease</span>
+                  <span class="text-lightAccent/60">Liberação gradual</span>
+                </div>
+                <div class="h-16 bg-white/5 rounded-xl overflow-hidden relative">
+                  <svg class="w-full h-full" viewBox="0 0 400 60" preserveAspectRatio="none">
+                    <defs>
+                      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#1f8a5b"/>
+                        <stop offset="100%" style="stop-color:#6ee7b7"/>
+                      </linearGradient>
+                    </defs>
+                    <path d="M0 55 Q100 40 200 30 Q300 35 400 50" stroke="url(#grad)" stroke-width="3" fill="none"/>
+                  </svg>
+                  <div class="absolute top-2 right-4 text-xs text-lightAccent/60">Constante e equilibrada</div>
+                </div>
+              </div>
             </div>
-
-            <div class="grid lg:grid-cols-3 gap-6">
-                <div class="section-fade glass rounded-3xl p-8 shadow-soft card-hover">
-                    <div class="w-14 h-14 rounded-2xl bg-bio-500/15 flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-bio-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 15a4 4 0 014-4h11a3 3 0 010 6H7a4 4 0 01-4-4z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-3">Eficiência de nutrientes</h3>
-                    <p class="text-white/72 leading-relaxed">
-                        Busca aumentar o aproveitamento do fertilizante por meio de uma entrega mais equilibrada e menos imediata.
-                    </p>
-                </div>
-
-                <div class="section-fade glass rounded-3xl p-8 shadow-soft card-hover">
-                    <div class="w-14 h-14 rounded-2xl bg-bio-500/15 flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-bio-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8c-2 0-4 1.5-4 4.2 0 2.9 2.2 5.1 4 6.8 1.8-1.7 4-3.9 4-6.8C16 9.5 14 8 12 8z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-3">Sustentabilidade</h3>
-                    <p class="text-white/72 leading-relaxed">
-                        Quanto menor a perda de nutrientes no solo, maior o potencial de alinhamento entre produtividade e responsabilidade ambiental.
-                    </p>
-                </div>
-
-                <div class="section-fade glass rounded-3xl p-8 shadow-soft card-hover">
-                    <div class="w-14 h-14 rounded-2xl bg-bio-500/15 flex items-center justify-center mb-6">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-bio-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6v6l3 3m6-3A9 9 0 1112 3a9 9 0 019 9z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-black mb-3">Visão de escalabilidade</h3>
-                    <p class="text-white/72 leading-relaxed">
-                        A base conceitual pode evoluir futuramente para novos testes, otimizações de formulação e aplicações mais amplas.
-                    </p>
-                </div>
+            
+            <div class="flex justify-between text-xs text-textSecondary/40 mt-4 px-2">
+              <span>Dia 1</span>
+              <span>Dia 7</span>
+              <span>Dia 14</span>
             </div>
-
-            <div class="section-fade mt-8 grid lg:grid-cols-2 gap-8">
-                <div class="glass rounded-3xl p-8 shadow-soft">
-                    <h3 class="text-2xl font-black mb-5">Por que isso importa para a banca</h3>
-                    <div class="space-y-4">
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="font-bold mb-2">Há problema real</p>
-                            <p class="text-white/72">Ineficiência e perdas de fertilizantes são desafios concretos da agricultura.</p>
-                        </div>
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="font-bold mb-2">Há solução técnica</p>
-                            <p class="text-white/72">O projeto apresenta base material, lógica experimental e hipótese científica clara.</p>
-                        </div>
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-                            <p class="font-bold mb-2">Há inovação aplicada</p>
-                            <p class="text-white/72">Não é só conceito: há formulação, delineamento, implantação e possibilidade de evolução futura.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass rounded-3xl p-8 shadow-soft bg-gradient-to-br from-bio-500/10 to-white/5">
-                    <p class="text-sm uppercase tracking-[0.3em] text-bio-200/80 mb-3">Posicionamento</p>
-                    <h3 class="text-2xl font-black mb-5">Uma proposta feita para agricultura de alta eficiência</h3>
-                    <p class="text-2xl leading-relaxed font-bold text-bio-100">
-                        BioRelease Agro combina matriz biodegradável, fonte orgânica e nutrição mineral em uma formulação pensada para liberar nutrientes com mais estabilidade.
-                    </p>
-                    <p class="mt-6 text-white/72 leading-relaxed">
-                        A apresentação passa a destacar a proposta, a metodologia e o acesso direto ao estudo completo, sem elementos de protótipo na interface.
-                    </p>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-    <section id="artigo" class="py-20 border-y border-white/10 bg-white/[0.02]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade max-w-3xl mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Artigo científico</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    O estudo completo está disponível para leitura integral em um clique.
-                </h2>
-                <p class="mt-5 text-white/72 leading-relaxed text-lg">
-                    A versão completa da pesquisa reúne fundamentação, formulação, delineamento experimental e interpretação da proposta BioRelease Agro.
-                </p>
-            </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="grid lg:grid-cols-[1.4fr_.9fr] gap-6 items-stretch">
-                <div class="section-fade glass rounded-[2rem] p-8 sm:p-10 shadow-soft relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-bio-400/10 via-transparent to-white/5 pointer-events-none"></div>
-                    <div class="relative">
-                        <p class="text-sm uppercase tracking-[0.28em] text-bio-200/75 mb-3">Leitura integral</p>
-                        <h3 class="text-3xl font-black leading-tight max-w-2xl">
-                            A pesquisa completa apresenta a lógica técnica do BioRelease do conceito ao experimento.
-                        </h3>
-                        <p class="mt-5 text-white/72 leading-relaxed text-lg max-w-2xl">
-                            O documento consolida a justificativa científica, a composição da formulação, o desenho metodológico e os critérios de comparação utilizados no projeto.
-                        </p>
-
-                        <div class="mt-8 flex flex-wrap gap-4">
-                            <a href="biorelease.pdf" target="_blank" rel="noopener noreferrer" class="px-6 py-4 rounded-2xl bg-bio-500 hover:bg-bio-400 font-bold shadow-glow transition">
-                                Abrir pesquisa completa
-                            </a>
-                            <a href="#contato" class="px-6 py-4 rounded-2xl border border-white/15 bg-white/5 hover:bg-white/10 font-semibold transition">
-                                Ir para o rodapé
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-fade grid gap-4">
-                    <div class="glass rounded-3xl p-6 card-hover">
-                        <p class="text-sm text-bio-200 font-semibold">Conteúdo</p>
-                        <p class="font-bold text-2xl mt-2">Fundamentação, composição e experimento</p>
-                    </div>
-                    <div class="glass rounded-3xl p-6 card-hover">
-                        <p class="text-sm text-bio-200 font-semibold">Formato</p>
-                        <p class="font-bold text-2xl mt-2">PDF pronto para apresentação e consulta</p>
-                    </div>
-                    <div class="glass rounded-3xl p-6 card-hover">
-                        <p class="text-sm text-bio-200 font-semibold">Acesso</p>
-                        <p class="font-bold text-2xl mt-2">Leitura direta em nova guia, sem embed na página</p>
-                    </div>
-                </div>
-            </div>
+  <!-- Document CTA Section -->
+  <section class="py-24 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="fade-up glass rounded-3xl p-8 sm:p-12 glow-card text-center relative overflow-hidden">
+        <!-- Background decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div class="relative">
+          <div class="w-16 h-16 rounded-2xl bg-emerald/20 flex items-center justify-center mx-auto mb-6">
+            <svg class="w-8 h-8 text-lightAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          
+          <h2 class="text-2xl sm:text-3xl font-bold mb-4">Veja o estudo completo do BioRelease</h2>
+          <p class="text-textSecondary mb-8 max-w-xl mx-auto">
+            Metodologia, resultados, comparações e fundamentos científicos reunidos em um documento técnico.
+          </p>
+          
+          <a href="biorelease.pdf" target="_blank" class="inline-flex items-center justify-center gap-3 bg-emerald hover:bg-emerald/90 text-bg px-10 py-5 rounded-xl font-semibold text-lg glow-btn transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            Abrir PDF Oficial
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section class="py-20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade text-center max-w-3xl mx-auto mb-12">
-                <p class="text-sm uppercase tracking-[0.3em] text-bio-200/75 mb-3">Perguntas rápidas</p>
-                <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                    O que a banca pode querer saber em poucos segundos
-                </h2>
-            </div>
-
-            <div class="section-fade space-y-4">
-                <div class="glass rounded-3xl overflow-hidden">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left">
-                        <span class="font-bold text-lg">O que é o BioRelease em uma frase?</span>
-                        <span class="faq-icon text-2xl">+</span>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 text-white/72 leading-relaxed">
-                        É uma formulação experimental de fertilizante de liberação controlada, desenvolvida para comparar
-                        uma dinâmica mais gradual de disponibilização de nutrientes com a adubação mineral convencional.
-                    </div>
-                </div>
-
-                <div class="glass rounded-3xl overflow-hidden">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left">
-                        <span class="font-bold text-lg">Qual é a inovação principal?</span>
-                        <span class="faq-icon text-2xl">+</span>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 text-white/72 leading-relaxed">
-                        A inovação está em estruturar o fertilizante em uma matriz com potencial de modular a liberação
-                        de nutrientes, em vez de simplesmente aplicar o NPK de maneira direta.
-                    </div>
-                </div>
-
-                <div class="glass rounded-3xl overflow-hidden">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left">
-                        <span class="font-bold text-lg">Como o projeto foi testado?</span>
-                        <span class="faq-icon text-2xl">+</span>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 text-white/72 leading-relaxed">
-                        Por meio de um experimento com feijão em nove unidades experimentais, divididas em três tratamentos:
-                        BioRelease, NPK convencional e grupo controle.
-                    </div>
-                </div>
-
-                <div class="glass rounded-3xl overflow-hidden">
-                    <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left">
-                        <span class="font-bold text-lg">Qual o ganho potencial desse tipo de sistema?</span>
-                        <span class="faq-icon text-2xl">+</span>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-6 text-white/72 leading-relaxed">
-                        Melhor aproveitamento dos nutrientes, maior permanência relativa no substrato e alinhamento com uma
-                        agricultura mais eficiente e sustentável.
-                    </div>
-                </div>
-            </div>
+  <!-- Footer -->
+  <footer class="py-12 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-emerald flex items-center justify-center">
+            <span class="text-bg font-bold">B</span>
+          </div>
+          <div>
+            <span class="font-semibold">BioRelease</span>
+            <p class="text-sm text-textSecondary">Inovação agrícola brasileira para uma nova geração de fertilizantes.</p>
+          </div>
         </div>
-    </section>
-
-    <section class="py-20 border-y border-white/10 bg-gradient-to-br from-bio-500/10 to-white/[0.03]">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade rounded-[2rem] border border-white/10 bg-[#0b140f]/70 p-8 md:p-12 shadow-glow relative overflow-hidden noise">
-                <div class="relative z-10 grid lg:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <p class="text-sm uppercase tracking-[0.3em] text-bio-200/80 mb-3">Pesquisa completa</p>
-                        <h2 class="text-3xl sm:text-4xl font-black leading-tight">
-                            Quer ir direto para o artigo e ver a pesquisa sem intermediários?
-                        </h2>
-                        <p class="mt-5 text-white/72 leading-relaxed text-lg">
-                            O PDF reúne a estrutura completa do trabalho, com a proposta do fertilizante, os materiais utilizados e o desenho experimental adotado no projeto.
-                        </p>
-                        <div class="mt-8">
-                            <a href="biorelease.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-4 rounded-2xl bg-bio-500 hover:bg-bio-400 font-bold shadow-glow transition">
-                                Ir direto para o artigo
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Proposta</p>
-                            <p class="font-bold text-xl mt-1">Nutrição com liberação mais controlada</p>
-                        </div>
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Base do estudo</p>
-                            <p class="font-bold text-xl mt-1">Formulação + comparação experimental</p>
-                        </div>
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Aplicabilidade</p>
-                            <p class="font-bold text-xl mt-1">Pesquisa voltada à eficiência agrícola</p>
-                        </div>
-                        <div class="rounded-2xl bg-white/5 border border-white/10 p-5">
-                            <p class="text-sm text-bio-200 font-semibold">Leitura</p>
-                            <p class="font-bold text-xl mt-1">Acesso direto ao artigo em PDF</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
+        <div class="flex items-center gap-6 text-sm">
+          <a href="biorelease.pdf" target="_blank" class="text-textSecondary hover:text-lightAccent transition-colors">
+            Documento Técnico
+          </a>
+          <a href="#resultados" class="text-textSecondary hover:text-lightAccent transition-colors">
+            Resultados
+          </a>
+          <a href="#galeria" class="text-textSecondary hover:text-lightAccent transition-colors">
+            Galeria
+          </a>
         </div>
-    </section>
+      </div>
+      
+      <div class="mt-8 pt-8 border-t border-white/5 text-center text-sm text-textSecondary/60">
+        <p>CEEP Assaí-PR • Curso Técnico em Desenvolvimento de Sistemas • Smart Agro 2026</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- CONTATO / RODAPÉ -->
-    <footer id="contato" class="pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="section-fade grid lg:grid-cols-4 gap-8 mb-12">
-                <div class="lg:col-span-2">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-bio-400 to-bio-700 flex items-center justify-center shadow-glow">
-                            <span class="font-black text-lg">B</span>
-                        </div>
-                        <div>
-                            <p class="font-bold text-xl">BioRelease Agro</p>
-                            <p class="text-sm text-white/60">Informativo oficial do projeto</p>
-                        </div>
-                    </div>
-
-                    <p class="text-white/72 leading-relaxed max-w-2xl">
-                        Projeto experimental voltado ao desenvolvimento e aplicação de um fertilizante de liberação controlada,
-                        com foco em eficiência nutricional, sustentabilidade e inovação aplicada à agricultura.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-black text-lg mb-4">Navegação</h3>
-                    <div class="space-y-3 text-white/70">
-                        <a href="#inicio" class="block hover:text-white">Início</a>
-                        <a href="#problema" class="block hover:text-white">Problema</a>
-                        <a href="#solucao" class="block hover:text-white">Solução</a>
-                        <a href="#experimento" class="block hover:text-white">Experimento</a>
-                        <a href="#artigo" class="block hover:text-white">Artigo</a>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="font-black text-lg mb-4">Contexto</h3>
-                    <div class="space-y-3 text-white/70">
-                        <p>Projeto Smart Agro</p>
-                        <p>CEEP Assaí-PR</p>
-                        <p>Pesquisa aplicada</p>
-                        <p>BioRelease Agro</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-fade pt-6 border-t border-white/10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-sm text-white/50">
-                <p>© 2026 BioRelease Agro. Página informativa para apresentação à banca.</p>
-                <a href="#topo" class="inline-flex items-center gap-2 hover:text-white transition">
-                    Voltar ao topo
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- BOTÃO FLUTUANTE -->
-    <button id="toTopBtn" class="fixed bottom-5 right-5 z-40 opacity-0 pointer-events-none transition-all duration-300 w-14 h-14 rounded-2xl bg-bio-500 hover:bg-bio-400 shadow-glow flex items-center justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 15l7-7 7 7" />
-        </svg>
+  <!-- Modal -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <button class="absolute top-4 right-4 text-white/80 hover:text-white" onclick="closeModal()">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
     </button>
+    <img id="modalImage" src="" alt="Imagem ampliada" onclick="event.stopPropagation()">
+  </div>
 
-    <script>
-        // MENU MOBILE
-        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-        mobileMenuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
 
-        // ANIMAÇÃO DE ENTRADA DAS SEÇÕES
-        const faders = document.querySelectorAll(".section-fade");
+    // Fade up animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                }
-            });
-        }, { threshold: 0.14 });
-
-        faders.forEach(item => fadeObserver.observe(item));
-
-        // CONTADORES
-        const counters = document.querySelectorAll(".counter");
-        let countersStarted = false;
-
-        function animateCounters() {
-            if (countersStarted) return;
-            countersStarted = true;
-
-            counters.forEach(counter => {
-                const target = Number(counter.getAttribute("data-target"));
-                let current = 0;
-                const increment = Math.max(1, Math.ceil(target / 30));
-
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = current;
-                    }
-                }, 40);
-            });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          
+          // Animate bars if present
+          const bars = entry.target.querySelectorAll('.bar-animation');
+          bars.forEach(bar => {
+            const width = bar.getAttribute('data-width');
+            bar.style.width = width + '%';
+          });
         }
+      });
+    }, observerOptions);
 
-        const heroCounters = document.querySelector(".counter");
-        if (heroCounters) {
-            const counterObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCounters();
-                    }
-                });
-            }, { threshold: 0.4 });
+    document.querySelectorAll('.fade-up').forEach(el => {
+      observer.observe(el);
+    });
 
-            counterObserver.observe(heroCounters);
-        }
+    // Initialize bars at 0 width
+    document.querySelectorAll('.bar-animation').forEach(bar => {
+      bar.style.width = '0%';
+    });
 
-        // TABS DE COMPOSIÇÃO
-        const tabButtons = document.querySelectorAll(".tab-btn");
-        const tabPanels = document.querySelectorAll(".tab-panel");
+    // Modal functions
+    function openModal(src) {
+      const modal = document.getElementById('imageModal');
+      const img = document.getElementById('modalImage');
+      img.src = src;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
-        tabButtons.forEach(btn => {
-            btn.addEventListener("click", () => {
-                const targetId = btn.getAttribute("data-tab");
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
 
-                tabButtons.forEach(item => item.classList.remove("active"));
-                btn.classList.add("active");
-
-                tabPanels.forEach(panel => panel.classList.add("hidden"));
-                document.getElementById(targetId).classList.remove("hidden");
-            });
-        });
-
-        // FAQ
-        const faqButtons = document.querySelectorAll(".faq-btn");
-
-        faqButtons.forEach(button => {
-            button.addEventListener("click", () => {
-                const wrapper = button.parentElement;
-                const content = wrapper.querySelector(".faq-content");
-                const icon = wrapper.querySelector(".faq-icon");
-
-                content.classList.toggle("hidden");
-                icon.textContent = content.classList.contains("hidden") ? "+" : "−";
-            });
-        });
-        // BOTÃO VOLTAR AO TOPO
-        const toTopBtn = document.getElementById("toTopBtn");
-
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 500) {
-                toTopBtn.classList.remove("opacity-0", "pointer-events-none");
-                toTopBtn.classList.add("opacity-100");
-            } else {
-                toTopBtn.classList.add("opacity-0", "pointer-events-none");
-                toTopBtn.classList.remove("opacity-100");
-            }
-        });
-
-        toTopBtn.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-
-        // LINK ATIVO NO MENU
-        const sections = document.querySelectorAll("section[id]");
-        const navLinks = document.querySelectorAll(".nav-link");
-
-        function updateActiveNav() {
-            let current = "";
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 140;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute("id");
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove("active");
-                const href = link.getAttribute("href").replace("#", "");
-                if (href === current) {
-                    link.classList.add("active");
-                }
-            });
-        }
-
-        window.addEventListener("scroll", updateActiveNav);
-        window.addEventListener("load", updateActiveNav);
-
-        // FECHAR MENU MOBILE AO CLICAR
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener("click", () => {
-                mobileMenu.classList.add("hidden");
-            });
-        });
-
-        // EFEITO SUAVE EXTRA EM BOTÕES
-        const buttons = document.querySelectorAll("a, button");
-        buttons.forEach(btn => {
-            btn.addEventListener("mouseenter", () => {
-                btn.style.transform = "translateY(-1px)";
-            });
-            btn.addEventListener("mouseleave", () => {
-                btn.style.transform = "";
-            });
-        });
-    </script>
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
-
-
